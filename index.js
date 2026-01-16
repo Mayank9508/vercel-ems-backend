@@ -4,7 +4,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import { connectDb } from "./config/db.js";
-import { userRegister } from "./userSeed.js";
+// import { userRegister } from "./userSeed.js";
 import { router as authRoutes } from "./routes/auth.route.js";
 import { router as departmentRoutes } from "./routes/department.route.js";
 import { router as employeeRoutes } from "./routes/employee.route.js";
@@ -36,7 +36,7 @@ app.use(
 app.use(express.json());
 
 connectDb();
-userRegister()
+// userRegister()
 
 app.get("/", (req, res) => {
   res.send("EMS Backend is running 🚀");
