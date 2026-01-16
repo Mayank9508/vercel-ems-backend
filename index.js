@@ -49,7 +49,7 @@ app.use("/api/salary", salaryRoutes);
 app.use("/api/leave", leaveRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
-
-app.listen(process.env.PORT, () => {
-  console.log(`server is running on Port ${process.env.PORT}`);
-});
+export default app;
+// app.listen(process.env.PORT, () => {
+//   console.log(`server is running on Port ${process.env.PORT}`);
+// });
