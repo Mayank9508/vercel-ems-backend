@@ -37,6 +37,10 @@ app.use(express.json());
 connectDb();
 userRegister()
 
+app.get("/", (req, res) => {
+  res.send("EMS Backend is running 🚀");
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/department", departmentRoutes);
 app.use("/api/employee", employeeRoutes);
