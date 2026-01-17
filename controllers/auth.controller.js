@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcrypt";
-// import {cacheIntance} from "../services/cache.service.js";
+import {cacheIntance} from "../services/cache.service.js";
 
 export const registerController = async (req, res) => {
   try {
