@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-// import redis from "redis";
+import redis from "redis";
 import express from "express";
 import cors from "cors";
 import { connectDb } from "./config/db.js";
@@ -12,24 +12,24 @@ import { router as salaryRoutes } from "./routes/salary.route.js";
 import { router as leaveRoutes } from "./routes/leave.route.js";
 import { router as dashboardRoutes } from "./routes/dashboard.route.js";
 import cookieParser from "cookie-parser";
-// import { cacheIntance } from "./services/cache.service.js";
+import { cacheIntance } from "./services/cache.service.js";
 
 
 const app = express();
 
-// cacheIntance.on("connect", () => {
-//   console.log("redis connected successfully");
-// });
+cacheIntance.on("connect", () => {
+  console.log("redis connected successfully");
+});
 
-// cacheIntance.on("error", (err) => {
-//   console.error("Redis Error:", err);
-// });
+cacheIntance.on("error", (err) => {
+  console.error("Redis Error:", err);
+});
 
 app.use(cookieParser());
 app.use(
   cors({
-    // origin: "http://localhost:5173",
-    origin: "https://vercel-ems-frontend.vercel.app",
+    origin: "http://localhost:5173",
+    // origin: "https://vercel-ems-frontend.vercel.app",
     credentials: true,
   })
 );
@@ -50,6 +50,6 @@ app.use("/api/leave", leaveRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 export default app;
-// app.listen(process.env.PORT, () => {
-//   console.log(`server is running on Port ${process.env.PORT}`);
-// });
+app.listen(process.env.PORT, () => {
+  console.log(`server is running on Port ${process.env.PORT}`);
+});

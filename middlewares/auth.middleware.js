@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { UserModel } from "../models/user.model.js";
-// import {cacheIntance} from "../services/cache.service.js";
+import {cacheIntance} from "../services/cache.service.js";
 
 export const authMiddleware = async (req, res, next) => {
   try {
@@ -13,13 +13,13 @@ export const authMiddleware = async (req, res, next) => {
       });
     }
 
-    // let isBlackListed = await cacheIntance.get(token);
+    let isBlackListed = await cacheIntance.get(token);
 
-    // if (isBlackListed) {
-    //   return res.status(400).json({
-    //     message: "token blacklisted! Unauthorized",
-    //   });
-    // }
+    if (isBlackListed) {
+      return res.status(400).json({
+        message: "token blacklisted! Unauthorized",
+      });
+    }
 
     let decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 

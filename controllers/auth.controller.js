@@ -111,7 +111,7 @@ export const loginController = async (req, res) => {
 export const logoutController = async (req, res) => {
   try {
     let token = req.cookies.token;
-    // await cacheIntance.set(token, "blacklisted");
+    await cacheIntance.set(token, "blacklisted");
 
     res.clearCookie("token",{
       httpOnly: true,
