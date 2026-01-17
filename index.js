@@ -28,8 +28,8 @@ cacheIntance.on("error", (err) => {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    // origin: "https://vercel-ems-frontend.vercel.app",
+    // origin: "http://localhost:5173",
+    origin: ["https://vercel-ems-frontend.vercel.app","http://localhost:5173"],
     credentials: true,
   })
 );
