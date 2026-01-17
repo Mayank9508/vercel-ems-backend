@@ -115,8 +115,11 @@ export const logoutController = async (req, res) => {
     let token = req.cookies.token;
     await cacheIntance.set(token, "blacklisted");
 
-    res.clearCookie("token",{
+    res.clearCookie("token", {
       httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      path: "/",
     });
 
     return res.status(200).json({
@@ -143,7 +146,6 @@ export const fetchLoginUserController = async (req, res) => {
     });
   }
 };
-
 
 //reset password feature
 
