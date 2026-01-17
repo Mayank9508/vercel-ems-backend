@@ -40,6 +40,7 @@ export const registerController = async (req, res) => {
       httpOnly: true,
       sameSite: "none",
       secure: true,
+      path: "/",
     });
 
     return res.status(201).json({
@@ -89,8 +90,9 @@ export const loginController = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
+      path: "/",
     });
 
     return res.status(200).json({
